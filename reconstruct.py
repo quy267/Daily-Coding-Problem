@@ -12,12 +12,36 @@ For example, given the sequence 2, 4, 3, 8, 7, 5, you should construct the follo
 2   4   8
 """
 
+COUNT = [10]
+
 
 class BSTNode:
     def __init__(self, val, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
+
+def print_2d(root, space):
+    # Base case
+    if root is None:
+        return
+
+    # Increase distance between levels
+    space += COUNT[0]
+
+    # Process right child first
+    print_2d(root.right, space)
+
+    # Print current node after space
+    # count
+    print()
+    for i in range(COUNT[0], space):
+        print(end=" ")
+    print(root.val)
+
+    # Process left child
+    print_2d(root.left, space)
 
 
 def reconstruct(postorder):
@@ -43,4 +67,4 @@ def reconstruct(postorder):
 
 
 if __name__ == '__main__':
-    print(reconstruct([2, 4, 3, 8, 7, 5]))
+    print_2d(reconstruct([2, 4, 3, 8, 7, 5]), 0)
