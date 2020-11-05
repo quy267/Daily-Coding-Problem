@@ -11,6 +11,7 @@ Given the input string abc, return ["a", "b", "c"].
 def is_palindrome(s):
     return s == s[::-1]
 
+
 def split_into_palindromes_recursive(s):
     if not s:
         return []
